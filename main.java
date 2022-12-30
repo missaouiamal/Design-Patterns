@@ -6,6 +6,10 @@ import BehavioralPatterns.Memento.History;
 import BehavioralPatterns.State.Canvas;
 import BehavioralPatterns.State.EraserTool;
 import BehavioralPatterns.State.SelectionTool;
+import BehavioralPatterns.Strategy.BlackAndWhiteFilter;
+import BehavioralPatterns.Strategy.ImageStorage;
+import BehavioralPatterns.Strategy.JpegCompressor;
+import BehavioralPatterns.Strategy.PngCompressor;
 
 public class main {
    public static void main(String[] args) {
@@ -39,16 +43,23 @@ public class main {
 
 //************************************************************** *//
     // ITERATOR PATTERN
-    BrowseHistory history = new BrowseHistory();
-    history.push("WWW.google.com");
-    history.push("WWW.linkedin.com");
-    history.push("WWW.youtube.com");
+    // BrowseHistory history = new BrowseHistory();
+    // history.push("WWW.google.com");
+    // history.push("WWW.linkedin.com");
+    // history.push("WWW.youtube.com");
 
-    Iterator iterator = history.createIterator();
-    while(iterator.hasNext()) {
-        String url = iterator.current();
-        System.out.println(url);
-        iterator.next();
-    }
+    // Iterator iterator = history.createIterator();
+    // while(iterator.hasNext()) {
+    //     String url = iterator.current();
+    //     System.out.println(url);
+    //     iterator.next();
+    // }
+
+//************************************************************** *//
+    // STRATEGY PATTERN 
+    ImageStorage imageStorage = new ImageStorage();
+    imageStorage.store("a",new JpegCompressor(), new BlackAndWhiteFilter());
+    imageStorage.store("a",new PngCompressor(), new BlackAndWhiteFilter());
+
    } 
 }
