@@ -1,4 +1,4 @@
-"
+
 # What's a design pattern?
 Design patterns are typical solutions to commonly occurring problems in software design. They are like pre-made blueprints that you can customize to solve a recurring design problem in your code.
 The pattern is not a specific piece of code, but a general concept for solving a particular problem. You can follow the pattern details and implement a solution that suits the realities of your own program.
@@ -38,4 +38,4 @@ The truth is that you might manage to work as a programmer for many years withou
 
 Source : Refactoring Guru : https://refactoring.guru/design-patterns
 
-"
+
