@@ -1,8 +1,19 @@
 
+import BehavioralPatterns.Command.AddCustomerCommand;
+import BehavioralPatterns.Command.BlackAndWhiteCommand;
+import BehavioralPatterns.Command.CompositeCommand;
+import BehavioralPatterns.Command.CustomerService;
+import BehavioralPatterns.Command.ResizeCommand;
+import BehavioralPatterns.Command.editor.BoldCommand;
+import BehavioralPatterns.Command.editor.HtmlDocument;
+import BehavioralPatterns.Command.editor.UndoCommand;
+import BehavioralPatterns.Command.editor.History;
+import BehavioralPatterns.Command.fx.Button;
+import BehavioralPatterns.Command.fx.Command;
 import BehavioralPatterns.Iterator.BrowseHistory;
 import BehavioralPatterns.Iterator.Iterator;
 import BehavioralPatterns.Memento.Editor;
-import BehavioralPatterns.Memento.History;
+// import BehavioralPatterns.Memento.History;
 import BehavioralPatterns.State.Canvas;
 import BehavioralPatterns.State.EraserTool;
 import BehavioralPatterns.State.SelectionTool;
@@ -10,6 +21,8 @@ import BehavioralPatterns.Strategy.BlackAndWhiteFilter;
 import BehavioralPatterns.Strategy.ImageStorage;
 import BehavioralPatterns.Strategy.JpegCompressor;
 import BehavioralPatterns.Strategy.PngCompressor;
+import BehavioralPatterns.TemplateMethod.Task;
+import BehavioralPatterns.TemplateMethod.TransferMoneyTask;
 
 public class main {
    public static void main(String[] args) {
@@ -57,9 +70,34 @@ public class main {
 
 //************************************************************** *//
     // STRATEGY PATTERN 
-    ImageStorage imageStorage = new ImageStorage();
-    imageStorage.store("a",new JpegCompressor(), new BlackAndWhiteFilter());
-    imageStorage.store("a",new PngCompressor(), new BlackAndWhiteFilter());
+    // ImageStorage imageStorage = new ImageStorage();
+    // imageStorage.store("a",new JpegCompressor(), new BlackAndWhiteFilter());
+    // imageStorage.store("a",new PngCompressor(), new BlackAndWhiteFilter());
+
+//************************************************************** *//
+    // TEMPLATE METHOD PATTERN 
+    // Task task = new TransferMoneyTask();
+    // task.execute();
+
+//************************************************************** *//
+    // COMMAND PATTERN
+    // CompositeCommand composite = new CompositeCommand();
+    // composite.add(new ResizeCommand());
+    // composite.add(new BlackAndWhiteCommand());
+    // composite.execute();
+
+    // UNDOABLE COMMAND
+    History history = new History();
+    HtmlDocument document = new HtmlDocument();
+    document.setContent("Hello World");
+
+    BoldCommand boldCommand = new BoldCommand(document, history);
+    boldCommand.execute();
+    System.out.println(document.getContent());
+
+   UndoCommand undoCommand = new UndoCommand(history);
+   undoCommand.execute();
+   System.out.println(document.getContent());
 
    } 
 }
