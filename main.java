@@ -1,11 +1,17 @@
 
+import BehavioralPatterns.ChainOfResponsibility.Authenticator;
+import BehavioralPatterns.ChainOfResponsibility.Compressor;
+import BehavioralPatterns.ChainOfResponsibility.Encryptor;
+import BehavioralPatterns.ChainOfResponsibility.HttpRequest;
+import BehavioralPatterns.ChainOfResponsibility.Logger;
+import BehavioralPatterns.ChainOfResponsibility.WebServer;
 import BehavioralPatterns.Command.AddCustomerCommand;
 import BehavioralPatterns.Command.BlackAndWhiteCommand;
 import BehavioralPatterns.Command.CompositeCommand;
 import BehavioralPatterns.Command.CustomerService;
 import BehavioralPatterns.Command.ResizeCommand;
 import BehavioralPatterns.Command.editor.BoldCommand;
-import BehavioralPatterns.Command.editor.HtmlDocument;
+// import BehavioralPatterns.Command.editor.HtmlDocument;
 import BehavioralPatterns.Command.editor.UndoCommand;
 import BehavioralPatterns.Command.editor.History;
 import BehavioralPatterns.Command.fx.Button;
@@ -23,6 +29,11 @@ import BehavioralPatterns.Strategy.JpegCompressor;
 import BehavioralPatterns.Strategy.PngCompressor;
 import BehavioralPatterns.TemplateMethod.Task;
 import BehavioralPatterns.TemplateMethod.TransferMoneyTask;
+import BehavioralPatterns.Visitor.AnchorNode;
+import BehavioralPatterns.Visitor.HeadingNode;
+import BehavioralPatterns.Visitor.HighlightOperation;
+import BehavioralPatterns.Visitor.HtmlDocument;
+import BehavioralPatterns.Visitor.PlainTextOperation;
 
 public class main {
    public static void main(String[] args) {
@@ -87,17 +98,33 @@ public class main {
     // composite.execute();
 
     // UNDOABLE COMMAND
-    History history = new History();
+//     History history = new History();
+//     HtmlDocument document = new HtmlDocument();
+//     document.setContent("Hello World");
+
+//     BoldCommand boldCommand = new BoldCommand(document, history);
+//     boldCommand.execute();
+//     System.out.println(document.getContent());
+
+//    UndoCommand undoCommand = new UndoCommand(history);
+//    undoCommand.execute();
+//    System.out.println(document.getContent());
+
+//************************************************************** *//
+    // CHAIN OF RESPONSIBILITY PATTERN
+    // Authenticator -> Compressor -> Encryptor
+    // Encryptor encyptor = new Encryptor(null);
+    // Compressor compressor = new Compressor(encyptor);
+    // // Logger logger = new Logger(compressor);
+    // Authenticator Authenticator = new Authenticator(compressor);
+    // WebServer server = new WebServer(Authenticator);
+    // server.handle(new HttpRequest("admin", "1234"));
+
+//************************************************************** *//
+    // VISITOR PATTERN 
     HtmlDocument document = new HtmlDocument();
-    document.setContent("Hello World");
-
-    BoldCommand boldCommand = new BoldCommand(document, history);
-    boldCommand.execute();
-    System.out.println(document.getContent());
-
-   UndoCommand undoCommand = new UndoCommand(history);
-   undoCommand.execute();
-   System.out.println(document.getContent());
-
+    document.add(new HeadingNode());
+    document.add(new AnchorNode());
+    document.execute(new PlainTextOperation());
    } 
 }
