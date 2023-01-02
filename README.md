@@ -3,14 +3,14 @@
 Design patterns are typical solutions to commonly occurring problems in software design. They are like pre-made blueprints that you can customize to solve a recurring design problem in your code.
 The pattern is not a specific piece of code, but a general concept for solving a particular problem. You can follow the pattern details and implement a solution that suits the realities of your own program.
 # The Catalog of Design Patterns
-# 1- Creational patterns
+## 1- Creational patterns
 These patterns provide various object creation mechanisms, which increase flexibility and reuse of existing code.
     * Factory Method 
     * Abstract Factory
     * Builder 
     * Prototype
     * Singleton
-# 2- Structural patterns
+## 2- Structural patterns
 These patterns explain how to assemble objects and classes into larger structures while keeping these structures flexible and efficient.
     * Adapter 
     * Bridge
@@ -19,7 +19,7 @@ These patterns explain how to assemble objects and classes into larger structure
     * Facade
     * Flyweight
     * Proxy 
-# 3- Behavioral patterns
+## 3- Behavioral patterns
 These patterns are concerned with algorithms and the assignment of responsibilities between objects.
     * Chain of Responsibilty
     * Command
