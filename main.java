@@ -18,7 +18,11 @@ import BehavioralPatterns.Command.fx.Button;
 import BehavioralPatterns.Command.fx.Command;
 import BehavioralPatterns.Iterator.BrowseHistory;
 import BehavioralPatterns.Iterator.Iterator;
+import BehavioralPatterns.Mediator.ArticleDialogBox;
 import BehavioralPatterns.Memento.Editor;
+import BehavioralPatterns.Observer.Chart;
+import BehavioralPatterns.Observer.DataSource;
+import BehavioralPatterns.Observer.SpreadSheet;
 // import BehavioralPatterns.Memento.History;
 import BehavioralPatterns.State.Canvas;
 import BehavioralPatterns.State.EraserTool;
@@ -122,9 +126,27 @@ public class main {
 
 //************************************************************** *//
     // VISITOR PATTERN 
-    HtmlDocument document = new HtmlDocument();
-    document.add(new HeadingNode());
-    document.add(new AnchorNode());
-    document.execute(new PlainTextOperation());
+    // HtmlDocument document = new HtmlDocument();
+    // document.add(new HeadingNode());
+    // document.add(new AnchorNode());
+    // document.execute(new PlainTextOperation());
+
+//************************************************************** *//
+    // OBSERVER PATTERN
+    // DataSource dataSource = new DataSource();
+    // SpreadSheet sheet1 = new SpreadSheet();
+    // SpreadSheet sheet2 = new SpreadSheet();
+    // Chart chart = new Chart();
+
+    // dataSource.addObserver(sheet1);
+    // dataSource.addObserver(sheet2);
+    // dataSource.addObserver(chart);
+
+    // dataSource.setValue(20);
+
+//************************************************************** *//
+    // MEDIATOR PATTERN
+    ArticleDialogBox dialog = new ArticleDialogBox();
+    dialog.simulateUserInteraction();
    } 
 }
