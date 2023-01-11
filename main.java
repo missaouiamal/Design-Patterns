@@ -42,12 +42,21 @@ import StructuralPatterns.Adapter.CaramelFilter;
 import StructuralPatterns.Adapter.Image;
 import StructuralPatterns.Adapter.ImageView;
 import StructuralPatterns.Adapter.avaFilters.Caramel;
+import StructuralPatterns.Bridge.LGTV;
+import StructuralPatterns.Bridge.RemoteControl;
+import StructuralPatterns.Bridge.SonyTV;
 import StructuralPatterns.Composite.Group;
 import StructuralPatterns.Composite.Shape;
 import StructuralPatterns.Decorator.CloudStream;
 import StructuralPatterns.Decorator.CompressedCloudStream;
 import StructuralPatterns.Decorator.EncryptedCloudStream;
 import StructuralPatterns.Decorator.Stream;
+import StructuralPatterns.Facade.NotificationService;
+import StructuralPatterns.Flyweight.Point;
+import StructuralPatterns.Flyweight.PointIconFactory;
+import StructuralPatterns.Flyweight.PointService;
+import StructuralPatterns.Proxy.EbookProxy;
+import StructuralPatterns.Proxy.Library;
 
 public class main {
    public static void main(String[] args) {
@@ -181,13 +190,39 @@ public class main {
 
 //************************************************************** *//
     // DECORATOR PATTERN
-    storeCreditCard(new EncryptedCloudStream( new CompressedCloudStream( new CloudStream())));
+    // storeCreditCard(new EncryptedCloudStream( new CompressedCloudStream( new CloudStream())));
 
+//************************************************************** *//   
+    // FACADE PATTERN
+    // NotificationService service = new NotificationService();
+    // service.send("Hello World","target");
+
+//************************************************************** *//
+    // FLYWEIGHT PATTERN
+    // PointService service = new PointService(new PointIconFactory());
+    // for (Point point : service.getPoints()) {
+    //     point.draw();
+    // }
+
+//************************************************************** *//   
+    // BRIDGE PATTERN
+    // RemoteControl remoteControl = new RemoteControl(new LGTV());
+    // remoteControl.turnOn();
+
+//************************************************************** *//   
+    // PROXY PATTERN
+    Library library = new Library();
+    String[] fileNames = {"a","b","c"};
+    for(String fileName : fileNames) {
+        library.add(new EbookProxy(fileName));
+    }
+    library.openEbook("a");
+    library.openEbook("b");
 
    } 
     // RELATED TO DECORATOR PATTERN
-   public static void storeCreditCard(Stream stream) {
-    stream.write("123-1234-1234-1234");
-   }
+//    public static void storeCreditCard(Stream stream) {
+//     stream.write("123-1234-1234-1234");
+//    }
 
 }
