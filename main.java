@@ -38,6 +38,16 @@ import BehavioralPatterns.Visitor.HeadingNode;
 import BehavioralPatterns.Visitor.HighlightOperation;
 import BehavioralPatterns.Visitor.HtmlDocument;
 import BehavioralPatterns.Visitor.PlainTextOperation;
+import StructuralPatterns.Adapter.CaramelFilter;
+import StructuralPatterns.Adapter.Image;
+import StructuralPatterns.Adapter.ImageView;
+import StructuralPatterns.Adapter.avaFilters.Caramel;
+import StructuralPatterns.Composite.Group;
+import StructuralPatterns.Composite.Shape;
+import StructuralPatterns.Decorator.CloudStream;
+import StructuralPatterns.Decorator.CompressedCloudStream;
+import StructuralPatterns.Decorator.EncryptedCloudStream;
+import StructuralPatterns.Decorator.Stream;
 
 public class main {
    public static void main(String[] args) {
@@ -146,7 +156,38 @@ public class main {
 
 //************************************************************** *//
     // MEDIATOR PATTERN
-    ArticleDialogBox dialog = new ArticleDialogBox();
-    dialog.simulateUserInteraction();
+    // ArticleDialogBox dialog = new ArticleDialogBox();
+    // dialog.simulateUserInteraction();
+
+//************************************************************** *//
+    // COMPOSITE PATTERN
+    // Group groupe1 = new Group();
+    // groupe1.add(new Shape());
+    // groupe1.add(new Shape());
+
+    // Group groupe2 = new Group();
+    // groupe2.add(new Shape());
+    // groupe2.add(new Shape());
+    
+    // Group group = new Group();
+    // group.add(groupe1);
+    // group.add(groupe2);
+    // group.render();
+
+//************************************************************** *//
+    // ADAPTER PATTERN
+    // ImageView imageView = new ImageView(new Image());
+    // imageView.apply(new CaramelFilter(new Caramel()));
+
+//************************************************************** *//
+    // DECORATOR PATTERN
+    storeCreditCard(new EncryptedCloudStream( new CompressedCloudStream( new CloudStream())));
+
+
    } 
+    // RELATED TO DECORATOR PATTERN
+   public static void storeCreditCard(Stream stream) {
+    stream.write("123-1234-1234-1234");
+   }
+
 }
